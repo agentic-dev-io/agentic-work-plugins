@@ -392,8 +392,11 @@ INSTALL pivot_table;
 
 -- Load for current session
 LOAD snowflake;
+LOAD bigquery;
+LOAD databricks;
 LOAD anofox_statistics;
 LOAD anofox_forecast;
+LOAD cache_httpfs;
 LOAD pivot_table;
 ```
 

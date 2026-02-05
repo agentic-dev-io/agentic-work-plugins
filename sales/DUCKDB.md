@@ -285,7 +285,7 @@ ORDER BY annual_revenue DESC;
 ## Quick Start with Sales Extensions
 
 ```sql
--- Install recommended extensions
+-- Install all recommended extensions
 INSTALL webbed;
 INSTALL netquack;
 INSTALL jsonata;
@@ -294,6 +294,7 @@ INSTALL marisa;
 
 -- Load for current session
 LOAD webbed;
+LOAD netquack;
 LOAD jsonata;
 LOAD fuzzycomplete;
 LOAD marisa;

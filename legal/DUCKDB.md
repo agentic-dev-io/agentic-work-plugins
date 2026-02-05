@@ -271,7 +271,7 @@ FROM scanned_contracts;
 ## Quick Start with Legal Extensions
 
 ```sql
--- Install recommended extensions
+-- Install all recommended extensions
 INSTALL markdown;
 INSTALL yaml;
 INSTALL rapidfuzz;
@@ -281,6 +281,7 @@ INSTALL encoding;
 LOAD markdown;
 LOAD yaml;
 LOAD rapidfuzz;
+LOAD encoding;
 ```
 
 ## Resources

@@ -14,7 +14,7 @@ This plugin uses DuckDB as a high-performance analytical database for data scien
 
 This plugin is configured with **Priority P0 (Critical)** extensions for comprehensive data analytics workflows.
 
-## Core Extensions
+## Built-in and Core Extensions
 
 ### Parquet (Built-in)
 Native support for columnar storage and cloud data lakes.

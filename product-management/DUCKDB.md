@@ -273,7 +273,7 @@ GROUP BY quarter, status;
 ## Quick Start with Product Management Extensions
 
 ```sql
--- Install recommended extensions
+-- Install all recommended extensions
 INSTALL webbed;
 INSTALL markdown;
 INSTALL yaml;
@@ -284,8 +284,10 @@ INSTALL pivot_table;
 -- Load for current session
 LOAD webbed;
 LOAD markdown;
+LOAD yaml;
 LOAD jsonata;
 LOAD datasketches;
+LOAD pivot_table;
 ```
 
 ## Resources

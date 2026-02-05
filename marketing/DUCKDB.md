@@ -352,7 +352,7 @@ JOIN segment_data USING (segment);
 ## Quick Start with Marketing Extensions
 
 ```sql
--- Install recommended extensions
+-- Install all recommended extensions
 INSTALL webbed;
 INSTALL markdown;
 INSTALL jsonata;
@@ -364,7 +364,9 @@ INSTALL minijinja;
 LOAD webbed;
 LOAD markdown;
 LOAD jsonata;
+LOAD anofox_statistics;
 LOAD rapidfuzz;
+LOAD minijinja;
 ```
 
 ## Resources

@@ -278,7 +278,7 @@ ORDER BY relevance DESC;
 ## Quick Start with Customer Support Extensions
 
 ```sql
--- Install recommended extensions
+-- Install all recommended extensions
 INSTALL rapidfuzz;
 INSTALL splink_udfs;
 INSTALL markdown;
@@ -287,6 +287,7 @@ INSTALL fuzzycomplete;
 
 -- Load for current session
 LOAD rapidfuzz;
+LOAD splink_udfs;
 LOAD markdown;
 LOAD jsonata;
 LOAD fuzzycomplete;

@@ -492,7 +492,7 @@ SELECT * FROM 'https://ftp.ebi.ac.uk/pub/databases/chembl/compounds.parquet';
 ## Quick Start with Bio-Research Extensions
 
 ```sql
--- Install recommended extensions
+-- Install all recommended extensions
 INSTALL arrow;
 INSTALL hdf5;
 INSTALL read_stat;
@@ -503,6 +503,7 @@ INSTALL cache_httpfs;
 -- Load for current session
 LOAD arrow;
 LOAD hdf5;
+LOAD read_stat;
 LOAD anofox_statistics;
 LOAD marisa;
 LOAD cache_httpfs;

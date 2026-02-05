@@ -271,7 +271,7 @@ HAVING count(*) > 1;
 ## Quick Start with Enterprise Search Extensions
 
 ```sql
--- Install recommended extensions
+-- Install all recommended extensions
 INSTALL rapidfuzz;
 INSTALL fuzzycomplete;
 INSTALL marisa;
@@ -285,6 +285,7 @@ LOAD fuzzycomplete;
 LOAD marisa;
 LOAD webbed;
 LOAD markdown;
+LOAD tsid;
 ```
 
 ## Resources
