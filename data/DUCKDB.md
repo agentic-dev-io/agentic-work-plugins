@@ -319,7 +319,13 @@ SELECT linregr_slope(y, x) as slope,
 FROM dataset;
 
 -- Multiple correlation analysis
-SELECT corr_matrix(['col1', 'col2', 'col3', 'col4'])
+SELECT 
+    CORR(col1, col2) as corr_col1_col2,
+    CORR(col1, col3) as corr_col1_col3,
+    CORR(col1, col4) as corr_col1_col4,
+    CORR(col2, col3) as corr_col2_col3,
+    CORR(col2, col4) as corr_col2_col4,
+    CORR(col3, col4) as corr_col3_col4
 FROM dataset;
 ```
 

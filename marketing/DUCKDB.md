@@ -261,15 +261,25 @@ INSTALL anofox_statistics;
 LOAD anofox_statistics;
 
 -- A/B test statistical significance
+WITH variant_stats AS (
+    SELECT 
+        variant,
+        conversions,
+        total_visitors,
+        conversions * 100.0 / total_visitors as conversion_rate,
+        SQRT((conversions * 100.0 / total_visitors) * (1 - conversions * 100.0 / total_visitors) / total_visitors) as std_error
+    FROM ab_test_results
+)
 SELECT 
     variant,
     conversions,
     total_visitors,
-    conversions * 100.0 / total_visitors as conversion_rate,
-    t_test_2sample(conversions, total_visitors) as significance_test,
-    confidence_interval(conversions, total_visitors, 0.95) as ci_95
-FROM ab_test_results
-GROUP BY variant;
+    conversion_rate,
+    -- Statistical significance between control and treatment
+    (MAX(CASE WHEN variant = 'treatment' THEN conversion_rate END) OVER () - 
+     MAX(CASE WHEN variant = 'control' THEN conversion_rate END) OVER ()) /
+    SQRT(SUM(std_error * std_error) OVER ()) as z_score
+FROM variant_stats;
 
 -- Correlation between ad spend and conversions
 SELECT 

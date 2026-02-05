@@ -286,15 +286,27 @@ Advanced variance analysis and regression for financial modeling.
 INSTALL anofox_statistics;
 LOAD anofox_statistics;
 
--- Variance decomposition with statistical significance
+-- Variance decomposition with statistical analysis
+WITH monthly_comparison AS (
+    SELECT 
+        account,
+        period,
+        actual,
+        budget,
+        actual - budget as variance,
+        LAG(actual, 12) OVER (PARTITION BY account ORDER BY period) as prior_year_actual
+    FROM monthly_actuals
+)
 SELECT 
     account,
-    actual,
-    budget,
-    actual - budget as variance,
-    t_test(actual, budget) as statistical_significance,
-    correlation(actual, LAG(actual, 12) OVER (ORDER BY period)) as year_over_year_corr
-FROM monthly_actuals
+    AVG(actual) as avg_actual,
+    AVG(budget) as avg_budget,
+    AVG(variance) as avg_variance,
+    STDDEV(variance) as variance_std_dev,
+    -- Year-over-year correlation
+    CORR(actual, prior_year_actual) as yoy_correlation
+FROM monthly_comparison
+WHERE prior_year_actual IS NOT NULL
 GROUP BY account;
 
 -- Regression analysis for expense forecasting

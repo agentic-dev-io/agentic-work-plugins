@@ -415,9 +415,15 @@ FROM gene_expression
 GROUP BY gene_id
 HAVING p_value < 0.05;
 
--- Correlation matrix for biomarkers
+-- Correlation matrix for biomarkers (pairwise)
 SELECT 
-    corr_matrix(['biomarker_1', 'biomarker_2', 'biomarker_3', 'outcome']) as correlation_matrix
+    'biomarkers' as metric_set,
+    CORR(biomarker_1, biomarker_2) as corr_bm1_bm2,
+    CORR(biomarker_1, biomarker_3) as corr_bm1_bm3,
+    CORR(biomarker_1, outcome) as corr_bm1_outcome,
+    CORR(biomarker_2, biomarker_3) as corr_bm2_bm3,
+    CORR(biomarker_2, outcome) as corr_bm2_outcome,
+    CORR(biomarker_3, outcome) as corr_bm3_outcome
 FROM clinical_data;
 
 -- ANOVA for multi-group comparison
