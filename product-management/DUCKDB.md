@@ -2,7 +2,24 @@
 
 ## Overview
 
-This plugin uses DuckDB for product metrics tracking, KPI analysis, and product analytics. DuckDB enables fast queries on feature usage data, user feedback, and roadmap metrics.
+**DuckDB ist die primäre Datenschicht dieses Plugins.** Alle Product-Daten — ob aus Tracker-Exporten, Analytics-Plattformen, Feedback-Tools oder manuellen Uploads — fließen durch DuckDB als zentralen Analytical Layer.
+
+This plugin uses DuckDB for product metrics tracking, KPI analysis, and product analytics. DuckDB enables fast queries on feature usage data, user feedback, and roadmap metrics. See [CONNECTORS.md](./CONNECTORS.md) for import methods.
+
+## CLI Usage
+
+DuckDB CLI ist systemweit installiert. Direkter Zugriff ohne MCP-Server:
+
+```bash
+# Interaktive Session
+duckdb ~/knowledge-work-data/product-management/product-management.duckdb
+
+# Einzelne Query
+duckdb ~/knowledge-work-data/product-management/product-management.duckdb -c "SELECT * FROM feature_requests LIMIT 10"
+
+# JSON importieren
+duckdb ~/knowledge-work-data/product-management/product-management.duckdb -c "CREATE TABLE feedback AS SELECT * FROM read_json('feedback.json')"
+```
 
 ## Database Location
 

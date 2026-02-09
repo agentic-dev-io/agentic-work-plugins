@@ -13,14 +13,15 @@ Update, create, or reprioritize a product roadmap.
 
 ### 1. Understand Current State
 
-If **~~project tracker** is connected:
-- Pull current roadmap items with their statuses, assignees, and dates
+**If ~~project tracker data is in DuckDB** (see [DUCKDB.md](../DUCKDB.md)):
+- Query current roadmap items with their statuses, assignees, and dates
 - Identify items that are overdue, at risk, or recently completed
 - Surface any items without clear owners or dates
 
-If no project management tool is connected:
+If no roadmap data is in DuckDB:
 - Ask the user to describe their current roadmap or paste/upload it
 - Accept any format: list, table, spreadsheet, screenshot, or prose description
+- Or import: Export from your ~~project tracker (JSON/CSV) → DuckDB
 
 ### 2. Determine the Operation
 
@@ -84,7 +85,7 @@ If this is an update to an existing roadmap, summarize what changed:
 After generating the roadmap:
 - Offer to format for a specific audience (executive summary, engineering detail, customer-facing)
 - Offer to draft communication about roadmap changes
-- If project management tool is connected, offer to update ticket statuses
+- If ~~project tracker data is in DuckDB, offer to track status changes
 
 ## Output Format
 

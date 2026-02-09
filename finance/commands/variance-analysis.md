@@ -39,17 +39,17 @@ Decompose variances into underlying drivers, provide narrative explanations for 
 
 ### 1. Gather Data
 
-If ~~erp or ~~data warehouse is connected:
-- Pull actuals for both comparison periods at the detail level
-- Pull budget/forecast data if comparing to plan
-- Pull supporting operational metrics (headcount, volumes, rates)
-- Pull prior variance analyses for context
+**If financial data is in DuckDB** (see [DUCKDB.md](../DUCKDB.md)):
+- Query actuals for both comparison periods at the detail level
+- Query budget/forecast data if comparing to plan
+- Query supporting operational metrics (headcount, volumes, rates)
+- Query prior variance analyses for context
 
-If no data source is connected:
-> Connect ~~erp or ~~data warehouse to pull financial data automatically. To analyze manually, provide:
-> 1. Actual data for both comparison periods (at account or line-item detail)
-> 2. Budget/forecast data (if comparing to plan)
-> 3. Any operational metrics that drive the financial results (headcount, volumes, pricing, etc.)
+**If data is not yet in DuckDB:**
+> Import your financial data into DuckDB first:
+> - **~~erp** Export: CSV/JSON/Parquet from your ERP system → `CREATE TABLE ... AS SELECT * FROM 'export.parquet'`
+> - **~~data warehouse** Federation: Use DuckDB's Snowflake/BigQuery/Databricks extensions for direct queries
+> - **Manual**: Paste or upload actual data for both comparison periods, budget/forecast data, and operational metrics
 
 ### 2. Calculate Top-Level Variance
 

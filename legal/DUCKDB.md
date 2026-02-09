@@ -2,7 +2,24 @@
 
 ## Overview
 
-This plugin uses DuckDB for contract analysis, document management, and legal research with full-text search and document similarity capabilities.
+**DuckDB ist die primäre Datenschicht dieses Plugins.** Alle Vertragsdaten, Dokumente und Legal-Research — ob aus CLM-Exporten, Cloud-Storage oder manuellen Uploads — fließen durch DuckDB als zentralen Analytical Layer.
+
+This plugin uses DuckDB for contract analysis, document management, and legal research with full-text search and document similarity capabilities. See [CONNECTORS.md](./CONNECTORS.md) for import methods.
+
+## CLI Usage
+
+DuckDB CLI ist systemweit installiert. Direkter Zugriff ohne MCP-Server:
+
+```bash
+# Interaktive Session
+duckdb ~/knowledge-work-data/legal/legal.duckdb
+
+# Einzelne Query
+duckdb ~/knowledge-work-data/legal/legal.duckdb -c "SELECT * FROM contracts LIMIT 10"
+
+# JSON importieren
+duckdb ~/knowledge-work-data/legal/legal.duckdb -c "CREATE TABLE docs AS SELECT * FROM read_json('contracts.json')"
+```
 
 ## Database Location
 

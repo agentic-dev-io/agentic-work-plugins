@@ -16,10 +16,12 @@ Synthesize user research from multiple sources into structured insights and reco
 Accept research from any combination of:
 - **Pasted text**: Interview notes, transcripts, survey responses, feedback
 - **Uploaded files**: Research documents, spreadsheets, recordings summaries
-- **~~knowledge base** (if connected): Search for research documents, interview notes, survey results
-- **~~user feedback** (if connected): Pull recent support tickets, feature requests, bug reports
-- **~~product analytics** (if connected): Pull usage data, funnel metrics, behavioral data
-- **~~meeting transcription** (if connected): Pull interview recordings, meeting summaries, and discussion notes
+- **~~knowledge base** data in DuckDB: Search research documents and interview notes with FTS/VSS
+- **~~user feedback** data in DuckDB: Query support tickets, feature requests, bug reports with FTS
+- **~~product analytics** data in DuckDB: Query usage data, funnel metrics, behavioral data
+- **~~meeting transcription** data in DuckDB: Search interview recordings and discussion notes with FTS/VSS
+
+> **Import**: Export data from your tools (JSON/CSV) → import into DuckDB. See [DUCKDB.md](../DUCKDB.md).
 
 Ask the user what they have:
 - What type of research? (interviews, surveys, usability tests, analytics, support tickets, sales call notes)

@@ -2,7 +2,27 @@
 
 ## Overview
 
-This plugin uses DuckDB as a high-performance analytical database for data science, BI, and analytics workflows. DuckDB excels at SQL analytics on large datasets with seamless integration to Python/R and cloud data sources.
+**DuckDB ist die primäre Datenschicht dieses Plugins.** Alle Daten — ob aus Warehouse-Federation, Parquet-Files, API-Exporten oder manuellen Uploads — fließen durch DuckDB als zentralen Analytical Layer.
+
+This plugin uses DuckDB as a high-performance analytical database for data science, BI, and analytics workflows. DuckDB excels at SQL analytics on large datasets with seamless integration to Python/R and cloud data sources. See [CONNECTORS.md](./CONNECTORS.md) for import methods.
+
+## CLI Usage
+
+DuckDB CLI ist systemweit installiert. Direkter Zugriff ohne MCP-Server:
+
+```bash
+# Interaktive Session
+duckdb ~/knowledge-work-data/data/data.duckdb
+
+# Einzelne Query
+duckdb ~/knowledge-work-data/data/data.duckdb -c "SELECT * FROM events LIMIT 10"
+
+# CSV importieren
+duckdb ~/knowledge-work-data/data/data.duckdb -c "CREATE TABLE raw AS SELECT * FROM read_csv('export.csv')"
+
+# Parquet von S3
+duckdb ~/knowledge-work-data/data/data.duckdb -c "SELECT * FROM 's3://bucket/data/*.parquet'"
+```
 
 ## Database Location
 

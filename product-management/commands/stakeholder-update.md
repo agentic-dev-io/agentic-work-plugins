@@ -30,30 +30,27 @@ Ask who the update is for:
 
 ### 3. Pull Context from Connected Tools
 
-If **~~project tracker** is connected:
-- Pull status of roadmap items and milestones
+**If ~~project tracker data is in DuckDB:**
+- Query status of roadmap items and milestones
 - Identify completed items since last update
 - Surface items that are at risk or blocked
-- Pull sprint or iteration progress
+- Query sprint or iteration progress
 
-If **~~chat** is connected:
-- Search for relevant team discussions and decisions
-- Find blockers or issues raised in channels
-- Identify key decisions made asynchronously
+**If ~~knowledge base data is in DuckDB:**
+- Search recent meeting notes and decision documents with FTS
+- Find design reviews and discussion summaries
 
-If **~~meeting transcription** is connected:
-- Pull recent meeting notes and discussion summaries
+**If ~~meeting transcription data is in DuckDB:**
+- Search recent meeting notes and discussion summaries with FTS/VSS
 - Find decisions and action items from relevant meetings
 
-If **~~knowledge base** is connected:
-- Search for recent meeting notes
-- Find decision documents or design reviews
-
-If no tools are connected, ask the user to provide:
+If no data is available in DuckDB, ask the user to provide:
 - What was accomplished since the last update
 - Current blockers or risks
 - Key decisions made or needed
 - What is coming next
+
+> **Import**: Export data from your tools (JSON/CSV) → import into DuckDB. See [DUCKDB.md](../DUCKDB.md).
 
 ### 4. Generate the Update
 

@@ -1,18 +1,35 @@
 # Connectors
 
+## Architektur: DuckDB-First
+
+Dieses Plugin nutzt DuckDB als **primäre Datenschicht**. `~~category` Platzhalter
+in Commands/Skills verweisen auf Daten die in DuckDB importiert wurden.
+
+**Primary:** DuckDB + Extensions (siehe [DUCKDB.md](./DUCKDB.md))
+**Import:** CLI + Skills (CSV/JSON/Parquet Export → DuckDB Import)
+
 ## How tool references work
 
-Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~project tracker` might mean Asana, Linear, Jira, or any other project tracker with an MCP server.
-
-Plugins are **tool-agnostic** — they describe workflows in terms of categories (chat, project tracker, knowledge base, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.
+Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. Plugins are **tool-agnostic** — they describe workflows in terms of categories rather than specific products. All data flows through DuckDB as the central analytical layer.
 
 ## Connectors for this plugin
 
-| Category | Placeholder | Included servers | Other options |
-|----------|-------------|-----------------|---------------|
-| Chat | `~~chat` | Slack | Microsoft Teams, Discord |
-| Email | `~~email` | Microsoft 365 | — |
-| Calendar | `~~calendar` | Microsoft 365 | — |
-| Knowledge base | `~~knowledge base` | Notion | Confluence, Guru, Coda |
-| Project tracker | `~~project tracker` | Asana, Linear, Atlassian (Jira/Confluence), monday.com, ClickUp | Shortcut, Basecamp, Wrike |
-| Office suite | `~~office suite` | Microsoft 365 | — |
+| Kategorie | Placeholder | Import-Methode | Extensions |
+|-----------|-------------|----------------|------------|
+| Project tracker | `~~project tracker` | JSON/CSV Export aus Asana/Linear/Jira → DuckDB Import | json, fts |
+| Knowledge base | `~~knowledge base` | Notes/Docs als JSON/Markdown → DuckDB Import mit FTS | fts, vss |
+| Calendar | `~~calendar` | ICS/JSON Export → DuckDB Import | json |
+| Email | `~~email` | — (Output: Copy to email client) | — |
+| Office suite | `~~office suite` | Dokumente als JSON/Text → DuckDB Import | json, fts |
+
+### DuckDB als Primary Data Layer
+
+DuckDB ersetzt direkte MCP-Verbindungen zu externen Systemen. Stattdessen:
+
+1. **Tasks**: JSON/CSV Export aus Asana, Linear, Jira → DuckDB Import mit FTS-Index
+2. **Kalender**: ICS/JSON Export → DuckDB Import für Meeting-Analytics und Focus-Time-Tracking
+3. **Notizen**: Content-Export aus Notion/Confluence → FTS für Volltext-Suche, VSS für Related Notes
+4. **Workflow-Configs**: YAML Extension für Workflow-Automation Konfigurationen
+5. **Multi-Tool Aggregation**: JSONata Extension für Normalisierung aus verschiedenen Tools
+
+Siehe [DUCKDB.md](./DUCKDB.md) für detaillierte Extension-Configs und SQL-Beispiele.

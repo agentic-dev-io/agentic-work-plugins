@@ -29,14 +29,12 @@ Ask the user:
 - Job postings (signal of strategic direction)
 - Social media and community discussions
 
-If **~~knowledge base** is connected:
-- Search for existing competitive analysis documents
+**If ~~knowledge base data is in DuckDB:**
+- Search existing competitive analysis documents with FTS/VSS
 - Find win/loss reports or sales battle cards
-- Pull prior competitive research
+- Query prior competitive research
 
-If **~~chat** is connected:
-- Search for competitive mentions in sales or product channels
-- Find recent deal feedback involving competitors
+> **Import**: Export competitive docs from your knowledge base (JSON/Markdown) → import into DuckDB. See [DUCKDB.md](../DUCKDB.md).
 
 ### 3. Generate the Brief
 

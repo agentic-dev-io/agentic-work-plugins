@@ -13,12 +13,12 @@ Review and analyze product metrics, identify trends, and surface actionable insi
 
 ### 1. Gather Metrics Data
 
-If **~~product analytics** is connected:
-- Pull key product metrics for the relevant time period
-- Get comparison data (previous period, same period last year, targets)
-- Pull segment breakdowns if available
+**If ~~product analytics data is in DuckDB** (see [DUCKDB.md](../DUCKDB.md)):
+- Query key product metrics for the relevant time period
+- Query comparison data (previous period, same period last year, targets)
+- Query segment breakdowns if available
 
-If no analytics tool is connected, ask the user to provide:
+If no analytics data is available, ask the user to provide:
 - The metrics and their values (paste a table, screenshot, or describe)
 - Comparison data (previous period, targets)
 - Any context on recent changes (launches, incidents, seasonality)

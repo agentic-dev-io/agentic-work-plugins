@@ -38,16 +38,16 @@ Gather the following from the user. If not provided, ask before proceeding:
 
 Research keywords related to the user's domain, topic, or target keywords.
 
-**If ~~SEO tools are connected:**
-- Pull keyword data, search volume, keyword difficulty scores, and ranking positions automatically
+**If ~~SEO data is in DuckDB** (see [DUCKDB.md](../DUCKDB.md)):
+- Query keyword data, search volume, keyword difficulty scores, and ranking positions
 - Identify keywords the site currently ranks for and where it's gaining or losing ground
 
-**If ~~product analytics are connected:**
+**If ~~product analytics data is in DuckDB:**
 - Cross-reference keyword targets with actual organic traffic data to validate which keywords are driving visits and conversions
 
-**If tools are not connected:**
+**If no SEO data is in DuckDB:**
 - Use web search to research the keyword landscape
-- Note: "For more precise volume and difficulty data, connect an SEO tool like Ahrefs or Semrush via MCP. The audit will auto-populate with ranking data."
+- Import: Export keyword data from Ahrefs/Semrush (CSV) → DuckDB for precise volume and difficulty data
 
 For each keyword opportunity, assess:
 - **Primary keywords** — high-intent terms directly tied to the user's product or service

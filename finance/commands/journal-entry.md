@@ -31,14 +31,17 @@ Prepare journal entries with proper debits, credits, supporting detail, and revi
 
 ### 1. Gather Source Data
 
-If ~~erp or ~~data warehouse is connected:
-- Pull the trial balance for the specified period
-- Pull subledger detail for the relevant accounts
-- Pull prior period entries of the same type for reference
+**If GL data is in DuckDB** (see [DUCKDB.md](../DUCKDB.md)):
+- Query the trial balance for the specified period
+- Query subledger detail for the relevant accounts
+- Query prior period entries of the same type for reference
 - Identify the current GL balances for affected accounts
 
-If no data source is connected:
-> Connect ~~erp or ~~data warehouse to pull GL data automatically. You can also paste trial balance data or upload a spreadsheet.
+**If data is not yet in DuckDB:**
+> Import your GL data into DuckDB first:
+> - **~~erp** Export: CSV/JSON/Parquet from your ERP system → `CREATE TABLE ... AS SELECT * FROM 'export.parquet'`
+> - **~~data warehouse** Federation: Use DuckDB's Snowflake/BigQuery/Databricks extensions for direct queries
+> - **Manual**: Paste trial balance data or upload a spreadsheet with GL balances
 
 Prompt the user to provide:
 - Trial balance or GL balances for affected accounts

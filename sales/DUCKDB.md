@@ -2,7 +2,24 @@
 
 ## Overview
 
-This plugin uses DuckDB for sales pipeline analytics, deal tracking, customer relationship analysis, and sales forecasting with graph-like relationship queries.
+**DuckDB ist die primäre Datenschicht dieses Plugins.** Alle Sales-Daten — ob aus CRM-Exporten, Enrichment-Tools, Call-Transkripten oder manuellen Uploads — fließen durch DuckDB als zentralen Analytical Layer.
+
+This plugin uses DuckDB for sales pipeline analytics, deal tracking, customer relationship analysis, and sales forecasting with graph-like relationship queries. See [CONNECTORS.md](./CONNECTORS.md) for import methods.
+
+## CLI Usage
+
+DuckDB CLI ist systemweit installiert. Direkter Zugriff ohne MCP-Server:
+
+```bash
+# Interaktive Session
+duckdb ~/knowledge-work-data/sales/sales.duckdb
+
+# Einzelne Query
+duckdb ~/knowledge-work-data/sales/sales.duckdb -c "SELECT * FROM opportunities LIMIT 10"
+
+# CSV importieren
+duckdb ~/knowledge-work-data/sales/sales.duckdb -c "CREATE TABLE leads AS SELECT * FROM read_csv('crm_export.csv')"
+```
 
 ## Database Location
 

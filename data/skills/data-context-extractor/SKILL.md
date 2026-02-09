@@ -44,11 +44,11 @@ Common options:
 - **PostgreSQL/Redshift**
 - **Databricks**
 
-Use `~~data warehouse` tools (query and schema) to connect. If unclear, check available MCP tools in the current session.
+Use DuckDB with warehouse extensions (Snowflake, BigQuery, Databricks) or `~~data warehouse` data imported into DuckDB. If the data warehouse is connected via DuckDB extensions, use DuckDB SQL to explore schemas.
 
 **Step 2: Explore the schema**
 
-Use `~~data warehouse` schema tools to:
+Use DuckDB queries (or `~~data warehouse` schema tools if directly connected) to:
 1. List available datasets/schemas
 2. Identify the most important tables (ask user: "Which 3-5 tables do analysts query most often?")
 3. Pull schema details for those key tables
@@ -167,7 +167,7 @@ Common gaps:
 
 For the identified domain:
 
-1. **Explore relevant tables**: Use `~~data warehouse` schema tools to find tables in that domain
+1. **Explore relevant tables**: Use DuckDB queries (or `~~data warehouse` schema tools) to find tables in that domain
 2. **Ask domain-specific questions**:
    - "What tables are used for [domain] analysis?"
    - "What are the key metrics for [domain]?"

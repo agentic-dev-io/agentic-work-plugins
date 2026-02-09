@@ -17,12 +17,13 @@ User runs `/brand-review` or asks to review, check, or audit content against bra
 
 1. **Content to review** — accept content in any of these forms:
    - Pasted directly into the conversation
-   - A file path or ~~knowledge base reference (e.g. Notion page, shared doc)
+   - A file path or ~~knowledge base data in DuckDB (search with FTS/VSS)
    - A URL to a published page
    - Multiple pieces for batch review
 
 2. **Brand guidelines source** (determined automatically):
    - If a brand style guide is configured in local settings, use it automatically
+   - **If ~~knowledge base data is in DuckDB**: search for brand guidelines and style guides with FTS
    - If not configured, ask: "Do you have a brand style guide or voice guidelines I should review against? You can paste them, share a file, or describe your brand voice. Otherwise, I'll do a general review for clarity, consistency, and professionalism."
 
 ## Review Process

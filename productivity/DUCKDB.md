@@ -2,7 +2,24 @@
 
 ## Overview
 
-This plugin uses DuckDB for personal task management, calendar analytics, and productivity tracking across multiple work tools.
+**DuckDB ist die primäre Datenschicht dieses Plugins.** Alle Produktivitätsdaten — ob aus Task-Exporten, Kalender-Daten, Notizen oder manuellen Uploads — fließen durch DuckDB als zentralen Analytical Layer.
+
+This plugin uses DuckDB for personal task management, calendar analytics, and productivity tracking across multiple work tools. See [CONNECTORS.md](./CONNECTORS.md) for import methods.
+
+## CLI Usage
+
+DuckDB CLI ist systemweit installiert. Direkter Zugriff ohne MCP-Server:
+
+```bash
+# Interaktive Session
+duckdb ~/knowledge-work-data/productivity/productivity.duckdb
+
+# Einzelne Query
+duckdb ~/knowledge-work-data/productivity/productivity.duckdb -c "SELECT * FROM tasks LIMIT 10"
+
+# JSON importieren
+duckdb ~/knowledge-work-data/productivity/productivity.duckdb -c "CREATE TABLE cal AS SELECT * FROM read_json('calendar.json')"
+```
 
 ## Database Location
 

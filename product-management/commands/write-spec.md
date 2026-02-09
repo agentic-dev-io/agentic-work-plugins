@@ -31,21 +31,23 @@ Ask the user for the following. Be conversational — do not dump all questions 
 
 ### 3. Pull Context from Connected Tools
 
-If **~~project tracker** is connected:
-- Search for related tickets, epics, or features
-- Pull in any existing requirements or acceptance criteria
+**If ~~project tracker data is in DuckDB:**
+- Search for related tickets, epics, or features with FTS
+- Query existing requirements or acceptance criteria
 - Identify dependencies on other work items
 
-If **~~knowledge base** is connected:
-- Search for related research documents, prior specs, or design docs
-- Pull in relevant user research findings
+**If ~~knowledge base data is in DuckDB:**
+- Search for related research documents, prior specs, or design docs with FTS/VSS
+- Query relevant user research findings
 - Find related meeting notes or decision records
 
-If **~~design** is connected:
-- Pull related mockups, wireframes, or design explorations
+**If ~~design** specs are available:
+- Review related mockups, wireframes, or design explorations
 - Search for design system components relevant to the feature
 
-If these tools are not connected, work entirely from what the user provides. Do not ask the user to connect tools — just proceed with available information.
+If no data is in DuckDB, work entirely from what the user provides. Proceed with available information.
+
+> **Import**: Export data from your tools (JSON/CSV) → import into DuckDB. See [DUCKDB.md](../DUCKDB.md).
 
 ### 4. Generate the PRD
 

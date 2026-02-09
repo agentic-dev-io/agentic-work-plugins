@@ -30,13 +30,16 @@ Generate an income statement with period-over-period comparison and variance ana
 
 ### 1. Gather Financial Data
 
-If ~~erp or ~~data warehouse is connected:
-- Pull trial balance or income statement data for the specified period
-- Pull comparison period data (prior period, prior year, budget/forecast)
-- Pull account hierarchy and groupings for presentation
+**If financial data is in DuckDB** (see [DUCKDB.md](../DUCKDB.md)):
+- Query trial balance or income statement data for the specified period
+- Query comparison period data (prior period, prior year, budget/forecast)
+- Query account hierarchy and groupings for presentation
 
-If no data source is connected:
-> Connect ~~erp or ~~data warehouse to pull financial data automatically. You can also paste trial balance data, upload a spreadsheet, or provide income statement data for analysis.
+**If data is not yet in DuckDB:**
+> Import your financial data into DuckDB first:
+> - **~~erp** Export: CSV/JSON/Parquet from your ERP system → `CREATE TABLE ... AS SELECT * FROM 'export.parquet'`
+> - **~~data warehouse** Federation: Use DuckDB's Snowflake/BigQuery/Databricks extensions for direct queries
+> - **Manual**: Paste trial balance data, upload a spreadsheet, or provide income statement data for analysis
 
 Prompt the user to provide:
 - Current period revenue and expense data (by account or category)

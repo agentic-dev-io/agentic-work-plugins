@@ -2,7 +2,24 @@
 
 ## Overview
 
-This plugin uses DuckDB for campaign analytics, customer journey tracking, content performance analysis, and marketing attribution modeling.
+**DuckDB ist die primäre Datenschicht dieses Plugins.** Alle Marketing-Daten — ob aus Campaign-Exporten, SEO-Tools, Analytics-Plattformen oder manuellen Uploads — fließen durch DuckDB als zentralen Analytical Layer.
+
+This plugin uses DuckDB for campaign analytics, customer journey tracking, content performance analysis, and marketing attribution modeling. See [CONNECTORS.md](./CONNECTORS.md) for import methods.
+
+## CLI Usage
+
+DuckDB CLI ist systemweit installiert. Direkter Zugriff ohne MCP-Server:
+
+```bash
+# Interaktive Session
+duckdb ~/knowledge-work-data/marketing/marketing.duckdb
+
+# Einzelne Query
+duckdb ~/knowledge-work-data/marketing/marketing.duckdb -c "SELECT * FROM campaigns LIMIT 10"
+
+# CSV importieren
+duckdb ~/knowledge-work-data/marketing/marketing.duckdb -c "CREATE TABLE seo AS SELECT * FROM read_csv('keywords.csv')"
+```
 
 ## Database Location
 

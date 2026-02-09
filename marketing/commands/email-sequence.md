@@ -144,24 +144,24 @@ Introduction and what they will learn -- Lesson 1: foundational concept -- Lesso
 
 ## Tool Integration
 
-### If ~~email marketing is connected (e.g., Klaviyo, Mailchimp, Customer.io)
-- Reference how to set up the sequence as a flow or automation in the platform
-- Note any platform-specific features to use (e.g., smart send time, conditional splits, A/B testing)
-- Map the branching logic to the platform's visual flow builder concepts
+### If ~~email marketing data is in DuckDB
+- Reference campaign performance history to inform benchmarks and timing
+- Query past email metrics to set realistic targets for the new sequence
 
-### If ~~marketing automation or ~~CRM is connected (e.g., HubSpot, Marketo)
-- Reference lead scoring data to inform segmentation and exit conditions
+### If ~~marketing automation or ~~CRM data is in DuckDB
+- Query lead scoring data to inform segmentation and exit conditions
 - Use lifecycle stage data to tailor messaging per segment
-- Note how to set enrollment triggers based on CRM properties or list membership
 
-### If no tools are connected
-- Deliver all email content in copy-paste-ready format
-- Include a setup checklist the user can follow in any email platform:
+### Delivery
+- Deliver all email content in copy-paste-ready format for your email platform
+- Include a setup checklist:
   1. Create the automation or flow
   2. Set the enrollment trigger
   3. Add each email with the specified delays
   4. Configure branching and exit conditions
   5. Set up tracking for the recommended metrics
+
+> **Import**: Export campaign data from your email platform (CSV/JSON) → DuckDB. See [DUCKDB.md](../DUCKDB.md).
 
 ## Output
 

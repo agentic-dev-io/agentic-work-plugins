@@ -33,11 +33,11 @@ Then paste your notes, transcript, or upload a recording.
 │  ✓ Draft customer-facing follow-up email                        │
 │  ✓ Generate internal summary for your team                      │
 ├─────────────────────────────────────────────────────────────────┤
-│  SUPERCHARGED (when you connect your tools)                      │
-│  + Transcripts: Pull recording automatically (e.g. Gong, Fireflies) │
-│  + CRM: Update opportunity, log activity, create tasks          │
-│  + Email: Send follow-up directly from draft                    │
-│  + Calendar: Link to meeting, pull attendee context             │
+│  SUPERCHARGED (with data in DuckDB)                              │
+│  + Transcripts: Import from Gong/Fireflies → DuckDB FTS/VSS     │
+│  + CRM: Query ~~CRM data from DuckDB for deal context           │
+│  + Email: Copy follow-up to email client                         │
+│  + Calendar: Query ~~calendar data from DuckDB for attendee context │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -140,20 +140,19 @@ Here's what we discussed:
 
 ## If Connectors Available
 
-**Transcripts connected (e.g. Gong, Fireflies):**
-- I'll search for the call automatically
-- Pull the full transcript
-- Extract key moments flagged by the platform
+**If ~~conversation intelligence transcripts are in DuckDB:**
+- Search call transcripts with FTS/VSS for relevant context
+- Extract key moments from imported transcript data
+- Import: Export transcripts from Gong/Fireflies (JSON/CSV) → DuckDB
 
-**CRM connected:**
-- I'll offer to update the opportunity stage
-- Log the call as an activity
-- Create tasks for action items
-- Update next steps field
+**If ~~CRM data is in DuckDB:**
+- Query opportunity context and deal history
+- Reference prior interactions and account data
+- Import: Export CRM data (CSV/JSON/Parquet) → DuckDB
 
-**Email connected:**
-- I'll offer to create a draft in ~~email
-- Or send directly if you approve
+**Email output:**
+- Draft follow-up email as text output
+- Copy to your ~~email client to send
 
 ---
 

@@ -2,7 +2,27 @@
 
 ## Overview
 
-This plugin uses DuckDB as its primary analytical database for financial data processing, reporting, and analysis. DuckDB provides high-performance SQL analytics with support for various data formats and extensions.
+**DuckDB ist die primäre Datenschicht dieses Plugins.** Alle Finanzdaten — ob aus ERP-Exporten, Data-Warehouse-Federation oder manuellen Uploads — fließen durch DuckDB als zentralen Analytical Layer.
+
+This plugin uses DuckDB as its primary analytical database for financial data processing, reporting, and analysis. DuckDB provides high-performance SQL analytics with support for various data formats and extensions. See [CONNECTORS.md](./CONNECTORS.md) for import methods.
+
+## CLI Usage
+
+DuckDB CLI ist systemweit installiert. Direkter Zugriff ohne MCP-Server:
+
+```bash
+# Interaktive Session
+duckdb ~/knowledge-work-data/finance/finance.duckdb
+
+# Einzelne Query
+duckdb ~/knowledge-work-data/finance/finance.duckdb -c "SELECT * FROM transactions LIMIT 10"
+
+# CSV importieren
+duckdb ~/knowledge-work-data/finance/finance.duckdb -c "CREATE TABLE gl AS SELECT * FROM read_csv('export.csv')"
+
+# Parquet importieren
+duckdb ~/knowledge-work-data/finance/finance.duckdb -c "CREATE TABLE reports AS SELECT * FROM 'reports.parquet'"
+```
 
 ## Database Location
 

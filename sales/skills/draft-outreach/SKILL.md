@@ -9,13 +9,14 @@ Research first, then draft. This skill never sends generic outreach - it always 
 
 ## Connectors (Optional)
 
-| Connector | What It Adds |
-|-----------|--------------|
-| **Enrichment** | Verified email, phone, background details |
-| **CRM** | Prior relationship context, existing contacts |
-| **Email** | Create draft directly in your inbox |
+| Data Source | What It Adds |
+|------------|--------------|
+| **~~data enrichment** in DuckDB | Verified email, phone, background details |
+| **~~CRM** in DuckDB | Prior relationship context, existing contacts |
+| **~~email** | Output: Copy draft to your email client |
 
-> **No connectors?** Web research works great. I'll output the email text for you to copy.
+> **No data in DuckDB?** Web research works great. I'll output the email text for you to copy.
+> **Import**: Export enrichment/CRM data (CSV/JSON) → DuckDB. See [DUCKDB.md](../DUCKDB.md).
 
 ---
 
@@ -100,8 +101,7 @@ Research first, then draft. This skill never sends generic outreach - it always 
 
 ## Email Draft Status
 
-[Draft created - check ~~email]
-[Email not connected - copy email above]
+[Email draft ready - copy to ~~email client]
 [No email found - use LinkedIn approach]
 
 ---
@@ -193,27 +193,22 @@ Thanks for connecting! [Value-first: insight, article, observation]
 ### Step 5: Create Email Draft
 
 ```
-If email connector available:
-1. Create draft with to, subject, body
-2. Return draft link
-3. Note: "Draft created - review and send"
-
-If not available:
-1. Output email text
-2. Note: "Copy to your email client"
+1. Output email text with to, subject, body
+2. Note: "Copy to your ~~email client to send"
+3. If ~~CRM data is in DuckDB, suggest logging the outreach
 ```
 
 ---
 
 ## Capability by Connector
 
-| Capability | Web Only | + Enrichment | + CRM | + Email |
-|------------|----------|--------------|-------|---------|
+| Capability | Web Only | + ~~data enrichment in DuckDB | + ~~CRM in DuckDB | Output |
+|------------|----------|-------------------------------|-------------------|--------|
 | Personalized opening | Basic | Deep | With history | Same |
-| Verified email | No | Yes | Yes | Yes |
-| Background details | Public only | Full | Full | Full |
-| Prior relationship | No | No | Yes | Yes |
-| Auto-create draft | No | No | No | Yes |
+| Verified email | No | Yes | Yes | — |
+| Background details | Public only | Full | Full | — |
+| Prior relationship | No | No | Yes | — |
+| Email draft | Output text | Output text | Output text | Copy to ~~email |
 
 ---
 
